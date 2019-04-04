@@ -1,0 +1,66 @@
+.filterHeader {
+  display: inline;
+}
+.filterAddBtn {
+  width: 20px;
+  height: 20px;
+  padding: 0px;
+  margin-bottom: 14px;
+}
+.gameBox {
+  padding: 0px 15px 0px 15px;
+  border-bottom: solid 3px #0ff;
+  border-radius: 3px;
+}
+.mt-w {
+  border-bottom: solid 3px #0f0;
+  border-radius: 3px;
+}
+.mt-l {
+  border-bottom: solid 3px #f00;
+  border-radius: 3px;
+}
+.gameBoxHeader {
+  color: white;
+}
+.gamePlayDate {
+  float: left;
+  position: absolute;
+  font-size: 12px;
+  left: 3px;
+  top: -5px;
+}
+.gameTeam {
+  margin: 20px 0 15px;
+  margin: 2rem 0 1.5rem;
+  font-size: 30px;
+}
+.gamePBClasses {
+  width: 40px;
+  height: 40px;
+}
+.gamePBChamps {
+  width: 40px;
+}
+.c-Tank {
+  background-color: blue;
+}
+.c-Support {
+  background-color: lime;
+}
+.c-Flank {
+  background-color: purple;
+}
+.c-Damage {
+  background-color: red;
+}
+.gamePickTag {
+  color: black;
+  background-color: lime;
+  border-radius: 4px;
+}
+.gameBanTag {
+  color: black;
+  background-color: red;
+  border-radius: 4px;
+}

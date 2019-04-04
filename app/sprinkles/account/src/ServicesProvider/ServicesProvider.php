@@ -64,6 +64,14 @@ class ServicesProvider
         $container->extend('classMapper', function ($classMapper, $c) {
             $classMapper->setClassMapping('user', 'UserFrosting\Sprinkle\Account\Database\Models\User');
             $classMapper->setClassMapping('group', 'UserFrosting\Sprinkle\Account\Database\Models\Group');
+            //PowTecH - filters: giving them to the user
+            $classMapper->setClassMapping('LFilter', 'UserFrosting\Sprinkle\Account\Database\Models\LFilter');
+            $classMapper->setClassMapping('LTeam', 'UserFrosting\Sprinkle\Account\Database\Models\LTeam');
+            $classMapper->setClassMapping('LMap', 'UserFrosting\Sprinkle\Account\Database\Models\LMap');
+            $classMapper->setClassMapping('LPatch', 'UserFrosting\Sprinkle\Account\Database\Models\LPatch');
+            $classMapper->setClassMapping('LChampion', 'UserFrosting\Sprinkle\Account\Database\Models\LChampion');
+            $classMapper->setClassMapping('LRole', 'UserFrosting\Sprinkle\Account\Database\Models\LRole');
+            //end
             $classMapper->setClassMapping('role', 'UserFrosting\Sprinkle\Account\Database\Models\Role');
             $classMapper->setClassMapping('permission', 'UserFrosting\Sprinkle\Account\Database\Models\Permission');
             $classMapper->setClassMapping('activity', 'UserFrosting\Sprinkle\Account\Database\Models\Activity');

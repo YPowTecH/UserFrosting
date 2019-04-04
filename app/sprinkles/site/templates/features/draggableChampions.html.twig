@@ -1,0 +1,5 @@
+{% for champion in champions %}
+<div style="background: url({{assets.url('assets://img/paladins/champions')}}/{{champion.slug}}.png); background-size: 100%;"
+      class="draggable draggable3 ui-widget-content champ" id="{{champion.slug}}" name="{{champion.slug}}">
+</div>
+{% endfor %}

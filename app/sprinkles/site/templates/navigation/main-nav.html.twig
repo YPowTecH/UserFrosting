@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-md  navbar-static ms-navbar ms-navbar-dark navbar-mode">
+  <div class="container container-full">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{{site.uri.public}}">
+        <!-- <img src="assets/img/demo/logo-navbar.png" alt=""> -->
+        <span class="ms-logo ms-logo-sm">M</span>
+        <span class="ms-title">{{ site.title }} <strong>{{site.title2}}</strong></span>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="ms-navbar">
+      <ul class="navbar-nav">
+        {% block main_nav %}
+          <li class="nav-item active">
+            <a href="{{site.uri.public}}" class="nav-link" role="button" data-name="homez">{{translate("HOME")}}</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{site.uri.public}}/input" class="nav-link" role="button" data-name="inputz">Input</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle animated fadeIn animation-delay-9" data-toggle="dropdown" data-hover="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-name="ecommerce">{{current_user.user_name}} <i class="zmdi zmdi-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{{site.uri.public}}/account">Account</a></li>
+              <li class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{{site.uri.public}}/account/logout">Logout</a></li>
+            </ul>
+          </li>
+        {% endblock %}
+      </ul>
+    </div>
+    <a href="javascript:void(0)" class="ms-toggle-left btn-navbar-menu"><i class="zmdi zmdi-menu"></i></a>
+  </div> <!-- container -->
+</nav>

@@ -1,0 +1,22 @@
+{% extends "pages/abstract/base.html.twig" %}
+
+{% block stylesheets_page_group %}
+{% endblock %}
+
+{% block content %}
+  <div id="ms-preload" class="ms-preload">
+    <div id="status">
+      <div class="spinner">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+      </div>
+    </div>
+  </div>
+  <div class="ms-site-container">
+    {% include "navigation/main-nav.html.twig" %}
+      {% block body_matter %}{% endblock %}
+      {% block footer %}
+        {% include "pages/partials/footer.html.twig" %}
+      {% endblock %}
+  </div>
+{% endblock %}

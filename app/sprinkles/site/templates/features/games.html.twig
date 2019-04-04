@@ -1,0 +1,65 @@
+{% for game in games %}
+  <div class="col-xl-12 col-lg-12 col-sm-12">
+    <div class="card">
+      <div class="text-center gameBox '+borderWinLoseColor+'">
+        <div class="row gameBoxHeader" style="background-image:url({{assets.url('assets://img/paladins/maps')}}/{{game.mapSlug}}.png);background-position:center;">
+          <div class="col-sm-4">
+            <div class="gamePlayDate">{{game.created_at}}</div>
+            <div class="gameTeam">{{game.hTeamName}}{% if game.winner == "h" %} (W){% endif %}</div>
+          </div>
+          <div class="col-sm-4">
+            <div class="">{{game.score}}</div>
+            <div class="">{{game.mapName}}</div>
+          </div>
+          <div class="col-sm-4">
+            <div class="gameTeam">{% if game.winner == "a" %}(W) {% endif %}{{game.aTeamName}}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <table>
+              <tbody>
+                <tr>
+                  <td class="gamePickTag"><div class="">P</div></td>
+                  <td><div class="gamePBClasses c-{{game.champPR0}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP0}}.png" class="gamePBChamps"></div></td>
+                  <td><div class="gamePBClasses c-{{game.champPR3}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP3}}.png" class="gamePBChamps"></div></td>
+                  <td><div class="gamePBClasses c-{{game.champPR4}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP4}}.png" class="gamePBChamps"></div></td>
+                  <td><div class="gamePBClasses c-{{game.champPR7}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP7}}.png" class="gamePBChamps"></div></td>
+                  <td><div class="gamePBClasses c-{{game.champPR8}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP8}}.png" class="gamePBChamps"></div></td>
+                </tr>
+                <tr>
+                  <td class="gameBanTag"><div class="">B</div></td>
+                  <td><div class="gamePBClasses c-{{game.champBR0}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champB0}}.png" class="gamePBChamps"></div></td>
+                  <td><div class="gamePBClasses c-{{game.champBR2}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champB2}}.png" class="gamePBChamps"></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-sm-6">
+            <table class="float-right">
+              <tbody>
+                <tr>
+                  <td><div class="gamePBClasses c-{{game.champPR1}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP1}}.png" class="gamePBChamps"></div></td>
+                  <td><div class="gamePBClasses c-{{game.champPR2}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP2}}.png" class="gamePBChamps"></div></td>
+                  <td><div class="gamePBClasses c-{{game.champPR5}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP5}}.png" class="gamePBChamps"></div></td>
+                  <td><div class="gamePBClasses c-{{game.champPR6}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP6}}.png" class="gamePBChamps"></div></td>
+                  <td><div class="gamePBClasses c-{{game.champPR9}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP9}}.png" class="gamePBChamps"></div></td>
+                  <td class="gamePickTag"><div class="">P</div></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td><div class="gamePBClasses c-{{game.champBR1}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champB1}}.png" class="gamePBChamps"></div></td>
+                  <td><div class="gamePBClasses c-{{game.champBR3}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champB3}}.png" class="gamePBChamps"></div></td>
+                  <td class="gameBanTag"><div class="">B</div></td>
+                </tr>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}

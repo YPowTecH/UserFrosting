@@ -1,0 +1,216 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Filter List | {{current_user.LFilter.title}} | {{current_user.lFilter_id}} | {{current_user.group.name}}</h3>
+      </div>
+      <div class="card-body">
+        <form class="form-horizontal" id="filtersForm" autocomplete="off" method="GET" action="{{site.uri.public}}">
+          <div class="row">
+            <div class="col-md-4">
+              <fieldset>
+                <!--{% include "forms/csrf.html.twig" %}-->
+                <h4 class="mb-1 filterHeader">Team</h4>
+                <button type="button" class="btn btn-primary filterAddBtn" data-toggle="modal" data-target="#addTeam">+</button>
+                <div class="form-group row no-mt">
+                  <div class="col-lg-12">
+                    <select id="filterMainTeam" name="mt" class="form-control selectpicker" data-live-search="true" data-dropup-auto="false">
+                      <option value="">Main Team...</option>
+                      {% for team in teams %}
+                        <option value="{{team.abr}}">{{team.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-lg-12">
+                    <select id="filterHomeAway" name="ha" class="form-control selectpicker" data-live-search="true" data-dropup-auto="false">
+                      <option value="">Main Team is...</option>
+                      <option value="h">Home</option>
+                      <option value="a">Away</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <div class="col-md-4">
+              <fieldset>
+                <h4 class="mb-1">From</h4>
+                <div class="form-group row no-mt">
+                  <div class="col-lg-12">
+                    <input id="datePicker" name="fd" type="text" class="form-control">
+                  </div>
+                </div>
+                <h4 class="mb-1">To</h4>
+                <div class="form-group row no-mt">
+                  <div class="col-lg-12">
+                    <input id="datePicker" name="td" type="text" class="form-control">
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <div class="col-md-4">
+              <fieldset>
+                <h4 class="mb-1">Maps</h4>
+                <div class="form-group no-mt">
+                  <div class="col-lg-12">
+                    <select id="filterMaps" name="m[]" multiple="" class="selectpicker form-control" data-dropup-auto="false">
+                      {% for map in maps %}
+                        <option value="{{map.slug}}">{{map.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <h4 class="mb-1 filterHeader">Other Teams</h4>
+                <button type="button" class="btn btn-primary filterAddBtn" data-toggle="modal" data-target="#addTeam">+</button>
+                <div class="form-group no-mt">
+                  <div class="col-lg-12">
+                    <select id="filterOtherTeams" name="ot[]" multiple="" class="selectpicker form-control" data-dropup-auto="false">
+                      {% for team in teams %}
+                        <option value="{{team.abr}}">{{team.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <fieldset>
+                <h4 class="mb-1">Home Bans/Picks</h4>
+                <div class="form-group no-mt">
+                  <div class="ms-collapse" id="homePB" role="tablist" aria-multiselectable="true">
+                    <div class="mb-0 card card-primary">
+                      <div class="card-header" role="tab" id="headingHomeBans">
+                        <h4 class="card-title">
+                          <a class="collapsed withripple" role="button" data-toggle="collapse" href="#collapseHomeBans" aria-expanded="false" aria-controls="collapseHomeBans">
+                            <i class="zmdi zmdi-pin"></i> Bans </a>
+                        </h4>
+                      </div>
+                      <div id="collapseHomeBans" class="card-collapse collapse" role="tabpanel" aria-labelledby="headingHomeBans" data-parent="#homePB">
+                        <div class="col-lg-12">
+                          <select id="filterHomeBans" name="hb[]" multiple="" class="selectpicker form-control selectpicker" data-live-search="true" data-dropup-auto="false">
+                            {% for champion in champions %}
+                              <option value="{{champion.slug}}">{{champion.name}}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-0 card card-primary">
+                      <div class="card-header" role="tab" id="headingHomePicks">
+                        <h4 class="card-title">
+                          <a class="collapsed withripple" role="button" data-toggle="collapse" href="#collapseHomePicks" aria-expanded="false" aria-controls="collapseHomePicks">
+                            <i class="zmdi zmdi-pin"></i> Picks </a>
+                        </h4>
+                      </div>
+                      <div id="collapseHomePicks" class="card-collapse collapse" role="tabpanel" aria-labelledby="headingHomePicks" data-parent="#homePB">
+                        <div class="col-lg-12">
+                          <select id="filterHomePicks" name="hp[]" multiple="" class="selectpicker form-control selectpicker" data-live-search="true" data-dropup-auto="false">
+                            {% for champion in champions %}
+                                <option value="{{champion.slug}}">{{champion.name}}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <div class="col-md-4">
+              <fieldset>
+                <h4 class="mb-1">Away Bans/Picks</h4>
+                <div class="form-group no-mt">
+                  <div class="ms-collapse" id="awayPB" role="tablist" aria-multiselectable="true">
+                    <div class="mb-0 card card-primary">
+                      <div class="card-header" role="tab" id="headingAwayBans">
+                        <h4 class="card-title">
+                          <a class="collapsed withripple" role="button" data-toggle="collapse" href="#collapseAwayBans" aria-expanded="false" aria-controls="collapseAwayBans">
+                            <i class="zmdi zmdi-pin"></i> Bans </a>
+                        </h4>
+                      </div>
+                      <div id="collapseAwayBans" class="card-collapse collapse" role="tabpanel" aria-labelledby="headingAwayBans" data-parent="#awayPB">
+                        <div class="col-lg-12">
+                          <select id="filterAwayBans" name="ab[]" multiple="" class="selectpicker form-control selectpicker" data-live-search="true" data-dropup-auto="false">
+                            {% for champion in champions %}
+                                <option value="{{champion.slug}}">{{champion.name}}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-0 card card-primary">
+                      <div class="card-header" role="tab" id="headingAwayPicks">
+                        <h4 class="card-title">
+                          <a class="collapsed withripple" role="button" data-toggle="collapse" href="#collapseAwayPicks" aria-expanded="false" aria-controls="collapseAwayPicks">
+                            <i class="zmdi zmdi-pin"></i> Picks </a>
+                        </h4>
+                      </div>
+                      <div id="collapseAwayPicks" class="card-collapse collapse" role="tabpanel" aria-labelledby="headingAwayPicks" data-parent="#awayPB">
+                        <div class="col-lg-12">
+                          <select id="filterAwayPicks" name="ap[]" multiple="" class="selectpicker form-control selectpicker" data-live-search="true" data-dropup-auto="false">
+                            {% for champion in champions %}
+                                <option value="{{champion.slug}}">{{champion.name}}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <div class="col-md-4">
+              <fieldset>
+                <h4 class="mb-1">Patches</h4>
+                <div class="form-group no-mt">
+                  <div class="col-lg-12">
+                    <select id="filterPatches" name="p[]" multiple="" class="selectpicker form-control" data-dropup-auto="false">
+                      {% for patch in patches %}
+                        <option value="{{patch.slug}}">{{patch.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <h4 class="mb-1">Game</h4>
+                <div class="form-group no-mt">
+                  <div class="col-lg-12">
+                    <select id="filterTitle" name="t" class="selectpicker form-control" data-dropup-auto="false">
+                      <option value="Paladins">Paladins</option>
+                      <option value="Smite">Smite</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <fieldset>
+                <div class="form-group no-mt">
+                  <div class="col-lg-12">
+                    <button type="button" class="btn btn-raised btn-primary" id="filterShowClasses">Show Classes</button>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <fieldset>
+                <div class="form-group no-mt">
+                  <div class="col-lg-12">
+                    <input type="submit">
+                    <!--<button type="button" class="btn btn-raised btn-primary" id="filterSubmit">Filter</button>-->
+                    <button type="button" class="btn btn-raised btn-danger" id="filterClear">Clear</button>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
