@@ -17,8 +17,8 @@
               <div class="panel-heading">
                 <h3 class="panel-title">Matchup *</h3>
               </div>
-              <div class="panel-body" style="padding: 0px">
-                <div class="container" style="padding: 0px">
+              <div class="panel-body">
+                <div class="container">
                   <div class="row">
                     <div class="col-md-4">
                       <select id="team1" name="teamHome" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="1">
@@ -45,172 +45,44 @@
                       </select>
                     </div>
                   </div>
-                  <div class="row draftRow">
-                    <div class="col-sm-3">
-                      <div class="row">
-                        <div class="col-md-12" style="text-align: center">
-                          <h3>Bans</h3>
-                          <hr class="pbHeaders">
-                        </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="col-md-12 mt-2 homeDraftBox">
+                        <img src="{{assets.url('assets://img/paladins/champions/draft/dredge.png')}}" class="nPick"/>
                       </div>
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div data-b="0" class="draft homeDraft snaptarget ui-widget-header"></div>
-                        </div>
-                        <div class="col-md-6">
-                          <div data-b="2" class="draft homeDraft snaptarget ui-widget-header"></div>
-                        </div>
+                      <div class="col-md-12 mt-2 homeDraftBox">
+                        <img src="{{assets.url('assets://img/paladins/champions/draft/evie.png')}}" class="nPick"/>
                       </div>
-                      <div class="row">
-                        <div class="col-md-12" style="text-align: center">
-                          <h3>Picks</h3>
-                          <hr class="pbHeaders">
-                        </div>
+                      <div class="col-md-12 mt-2 homeDraftBox">
+                        <img src="{{assets.url('assets://img/paladins/champions/draft/fernando.png')}}" class="nPick"/>
                       </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div data-p="0" class="draft homeDraft snaptarget ui-widget-header"></div>
-                          <div class="nameSelectBox nsbl">
-                            <select id="player0" name="player[]" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3">
-                              <option value="">...</option>
-                            </select>
-                            <div class="whiteBox"></div>
-                          </div>
-                        </div>
+                      <div class="col-md-12 mt-2 homeDraftBox">
+                        <img src="{{assets.url('assets://img/paladins/champions/draft/furia.png')}}" class="nPick"/>
                       </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div data-p="3" class="draft homeDraft snaptarget ui-widget-header"></div>
-                          <div class="nameSelectBox nsbl">
-                            <select id="player3" name="player[]" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3">
-                              <option value="">...</option>
-                            </select>
-                            <div class="whiteBox"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div data-p="4" class="draft homeDraft snaptarget ui-widget-header"></div>
-                          <div class="nameSelectBox nsbl">
-                            <select id="player4" name="player[]" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3">
-                              <option value="">...</option>
-                            </select>
-                            <div class="whiteBox"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div data-p="7" class="draft homeDraft snaptarget ui-widget-header"></div>
-                          <div class="nameSelectBox nsbl">
-                            <select id="player7" name="player[]" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3">
-                              <option value="">...</option>
-                            </select>
-                            <div class="whiteBox"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div data-p="8" class="draft homeDraft snaptarget ui-widget-header"></div>
-                          <div class="nameSelectBox nsbl">
-                            <select id="player8" name="player[]" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3">
-                              <option value="">...</option>
-                            </select>
-                            <div class="whiteBox"></div>
-                          </div>
-                        </div>
+                      <div class="col-md-12 mt-2 homeDraftBox">
+                        <img src="{{assets.url('assets://img/paladins/champions/draft/grohk.png')}}" class="nPick"/>
                       </div>
                     </div>
-                    <div class="col-sm-6">
-                      <div class="champSearch">
-                        <input type="text" class="form-control clearable" placeholder="Search...">
+                    <div class="col-md-6">
+                      <div class="col-md-12 mt-2 awayDraftBox">
+                        <img src="{{assets.url('assets://img/paladins/champions/draft/grover.png')}}" class="nPicki"/>
                       </div>
-                      <div id="championSelectWindow">
-                        {% include "features/draggableChampions.html.twig" %}
+                      <div class="col-md-12 mt-2 awayDraftBox">
+                        <img src="{{assets.url('assets://img/paladins/champions/draft/imani.png')}}" class="nPicki"/>
                       </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="row">
-                        <div class="col-md-12" style="text-align: center">
-                          <h3>Bans</h3>
-                          <hr class="pbHeaders">
-                        </div>
+                      <div class="col-md-12 mt-2 awayDraftBox">
+                        <img src="{{assets.url('assets://img/paladins/champions/draft/inara.png')}}" class="nPicki"/>
                       </div>
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div data-b="1" class="draft awayDraft snaptarget ui-widget-header"></div>
-                        </div>
-                        <div class="col-md-6">
-                          <div data-b="3" class="draft awayDraft snaptarget ui-widget-header"></div>
-                        </div>
+                      <div class="col-md-12 mt-2 awayDraftBox">
+                        <img src="{{assets.url('assets://img/paladins/champions/draft/khan.png')}}" class="nPicki"/>
                       </div>
-                      <div class="row">
-                        <div class="col-md-12" style="text-align: center">
-                          <h3>Picks</h3>
-                          <hr class="pbHeaders">
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div data-p="1" class="draft awayDraft snaptarget snaptargetA ui-widget-header"></div>
-                          <div class="nameSelectBox">
-                            <select id="player1" name="player[]" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3">
-                              <option value="">...</option>
-                            </select>
-                            <div class="whiteBox"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">  
-                        <div class="col-md-12">
-                          <div data-p="2" class="draft awayDraft snaptarget snaptargetA ui-widget-header"></div>
-                          <div class="nameSelectBox">
-                            <select id="player2" name="player[]" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3">
-                              <option value="">...</option>
-                            </select>
-                            <div class="whiteBox"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div data-p="5" class="draft awayDraft snaptarget snaptargetA ui-widget-header"></div>
-                          <div class="nameSelectBox">
-                            <select id="player5" name="player[]" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3">
-                              <option value="">...</option>
-                            </select>
-                            <div class="whiteBox"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div data-p="6" class="draft awayDraft snaptarget snaptargetA ui-widget-header"></div>
-                          <div class="nameSelectBox">
-                            <select id="player6" name="player[]" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3">
-                              <option value="">...</option>
-                            </select>
-                            <div class="whiteBox"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div data-p="9" class="draft awayDraft snaptarget snaptargetA ui-widget-header"></div>
-                          <div class="nameSelectBox">
-                            <select id="player9" name="player[]" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3">
-                              <option value="">...</option>
-                            </select>
-                            <div class="whiteBox"></div>
-                          </div>
-                        </div>
+                      <div class="col-md-12 mt-2 awayDraftBox">
+                        <img src="{{assets.url('assets://img/paladins/champions/draft/buck.png')}}" class="nPicki"/>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </div><!--end container-->
+              </div><!--end body-->
             </div>
           </div>
         </div>

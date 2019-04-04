@@ -64,3 +64,33 @@
   background-color: red;
   border-radius: 4px;
 }
+
+/*input page*/
+.homeDraftBox {
+  padding: 0px;
+  height: 100px;
+  border: solid red 1px;
+  background-color: rgba(255, 0, 0, 0.3);
+}
+.awayDraftBox {
+  padding: 0px;
+  height: 100px;
+  background-color: rgba(0, 0, 255, 0.3);
+  border: solid blue 1px;
+}
+.pick {
+  height: 100px;
+}
+.nPick {
+  max-width: 100%;
+  height: auto;
+  width: auto\9; /* ie8 */
+}
+.nPicki {
+  max-width: 100%;
+  height: auto;
+  width: auto\9; /* ie8 */
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  float: right;
+}
