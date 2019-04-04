@@ -62,8 +62,8 @@ class PageController extends SimpleController {
 
     //Get all the games
     $par = array();
-    //$game = new LGame();
-    $games; //= $game->read($params, $currentUser);
+    $game = new LGame();
+    $games = $game->read($params, $currentUser);
 
     //Stupid paladins api that doesnt respond with custom games...
     //$api = new API('3022','973878F147394E06945258660DDB56DB', 'http://api.paladins.com/paladinsapi.svc/');
