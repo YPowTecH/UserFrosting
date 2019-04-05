@@ -129,7 +129,7 @@ class PageController extends SimpleController {
       ->get();
 
     // Probably a better way to do this
-    $champions = $classMapper->staticMethod('LChampion', 'where', 'lTitle_id', '1')
+    $champions = $classMapper->staticMethod('LChampion', 'where', 'lTitle_id', '2')
       ->select('lChampions.id', 'lChampions.slug', 'lChampions.name',
         'roleName.name AS roleName'
       )
