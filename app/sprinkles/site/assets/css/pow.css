@@ -71,12 +71,14 @@
   height: 100px;
   border: solid red 1px;
   background-color: rgba(255, 0, 0, 0.3);
+  cursor: pointer;
 }
 .awayDraftBox {
   padding: 0px;
   height: 100px;
   background-color: rgba(0, 0, 255, 0.3);
   border: solid blue 1px;
+  cursor: pointer;
 }
 .pick {
   height: 100px;
@@ -93,4 +95,10 @@
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
   float: right;
+}
+.selectChampion {
+  cursor: pointer;
+}
+.used {
+  opacity: 0.4;
 }
