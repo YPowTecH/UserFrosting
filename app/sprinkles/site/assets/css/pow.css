@@ -66,6 +66,32 @@
 }
 
 /*input page*/
+@media (max-width: 426px) {
+  .banBox {
+    width: 50%;
+  }
+}
+.stupidRow {
+  padding: 0px 15px 0px 15px;
+}
+.homeBanBox {
+  padding: 0px;
+  border: solid red 1px;
+  background-color: rgba(255, 0, 0, 0.3);
+  cursor: pointer;
+}
+.awayBanBox {
+  padding: 0px;
+  background-color: rgba(0, 0, 255, 0.3);
+  border: solid blue 1px;
+  cursor: pointer;
+}
+/*
+@media (min-width: 426px) {
+  .fr {
+    float: right!important;
+  }
+}*/
 .homeDraftBox {
   padding: 0px;
   height: 100px;
