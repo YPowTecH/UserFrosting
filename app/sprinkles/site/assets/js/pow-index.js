@@ -32,13 +32,15 @@ if (url.searchParams.getAll('ap[]') != null && url.searchParams.getAll('ap[]').l
 }
 
 $(document).ready(function() {
-  $('#filtersForm').submit(function() {
+  $('form').submit(function() {
     $(this).find(":input").filter(function(){ return !this.value; }).attr("disabled", "disabled");
+    //$(this).find(":input:hidden").filter(function(){ console.log(this); return !this.value; }).attr("disabled", "disabled");
     return true; // ensure form still submits
+    //return false; // ensure form still submits
   });
 
   //Apply url filters
-  filters();
+  //filters();
 });
 
 function filters() {

@@ -23,13 +23,11 @@
       </div>
     </div>
   </div>
-  <button type="button" class="btn btn-default btn-raised" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-  </button>
   <!--PowTecH's STUFF-->
   <div class="container mt-4">
-    <form id="theForm" class="form-horizontal">
+    <form id="theForm" class="form-horizontal" method="POST" action="api/input">
       <fieldset>
+        {% include "forms/csrf.html.twig" %}
         <div class="row">
           <div class="col-md-12">
             <div class="panel panel-primary">
@@ -43,7 +41,7 @@
                       <select id="team1" name="teamHome" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="1">
                         <option value="">Pick a Team 1...</option>
                         {% for team in teams %}
-                          <option value="{{team.abr}}">{{team.name}}</option>
+                          <option value="{{team.id}}">{{team.name}}</option>
                         {% endfor %}
                       </select>
                     </div>
@@ -51,7 +49,7 @@
                       <select id="map" name="map" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3">
                         <option value="">Pick a Map...</option>
                         {% for map in maps %}
-                          <option value="{{map.slug}}">{{map.name}}</option>
+                          <option value="{{map.id}}">{{map.name}}</option>
                         {% endfor %}
                       </select>
                     </div>
@@ -59,7 +57,7 @@
                       <select id="team2" name="teamAway" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="2">
                         <option value="">Pick a Team 2...</option>
                         {% for team in teams %}
-                          <option value="{{team.abr}}">{{team.name}}</option>
+                          <option value="{{team.id}}">{{team.name}}</option>
                         {% endfor %}
                       </select>
                     </div>
@@ -184,23 +182,28 @@
                     <div class="col-md-3">
                       <select id="patch" name="patch" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true">
                         {% for patch in patches %}
-                          <option value="{{patch.slug}}">{{patch.name}}</option>
+                          <option value="{{patch.id}}">{{patch.name}}</option>
                         {% endfor %}
                       </select>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-3" style="margin-top: 10px">
                       <input type="text" class="form-control" name="playDate" value="{{ "now"|date("m-d-Y") }}" tabindex="31">
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3" style="margin-top: 10px">
                       <input type="text" class="form-control" name="gameId" placeholder="ID">
                     </div>
-                    <div class="col-md-3" style="margin-top: 10px">
-                      <input type="button" class="btn btn-info btn-raised btn-block reset" value="Reset">
+                    <div class="col-md-3">
+                      <select id="winner" name="winner" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="17">
+                        <option value="1">Scrim</option>
+                        <option value="2">Tournament</option>
+                        <option value="3">Other</option>
+                      </select>
                     </div>
-                    <div class="col-md-3" style="margin-top: 10px">
-                      <input type="submit" class="btn btn-success btn-raised btn-block" value="Sumbit" tabindex="30">
+                    <div class="col-md-3 float-right" style="margin-top: 10px">
+                      <button type="button" class="btn btn-info btn-raised">Reset</button>
+                      <input type="submit" class="btn btn-success btn-raised" value="Submit" tabindex="30">
                       <input type="hidden" id="hiddenGameBans" name="hiddenGameBans" value="">
                       <input type="hidden" id="hiddenGamePicks" name="hiddenGamePicks" value="">
                     </div>

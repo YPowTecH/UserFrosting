@@ -117,11 +117,12 @@ class PageController extends SimpleController {
 
     // Probably a better way to do this
     $teams = $classMapper->staticMethod('LTeam', 'where', 'user_id', $currentUser->id)
-      ->orderBy('name', 'desc')
+      ->orderBy('name', 'asc')
       ->get();
 
     // Probably a better way to do this
     $maps = $classMapper->staticMethod('LMap', 'orderBy', 'name', 'desc')
+      ->orderBy('slug','asc')
       ->get();
 
     // Probably a better way to do this
@@ -144,7 +145,64 @@ class PageController extends SimpleController {
       'champions' => $champions,
     ]);
   }
-  
+
+  public function apiInput($request, $response, $args) {
+    // Get POST parameters
+    $params = $request->getParsedBody();
+
+    /** @var \UserFrosting\Sprinkle\Account\Authorize\AuthorizationManager $authorizer */
+    $authorizer = $this->ci->authorizer;
+
+    /** @var \UserFrosting\Sprinkle\Account\Database\Models\Interfaces\UserInterface $currentUser */
+    $currentUser = $this->ci->currentUser;
+
+    // Access-controlled page
+    if (!$authorizer->checkAccess($currentUser, 'create_group')) {
+      throw new ForbiddenException();
+    }
+
+    /** @var \UserFrosting\Sprinkle\Core\Alert\AlertStream $ms */
+    $ms = $this->ci->alerts;
+
+    // Load the request schema
+    $schema = new RequestSchema('schema://requests/input/create.yaml');
+
+    // Whitelist and set parameter defaults
+    $transformer = new RequestDataTransformer($schema);
+    $data = $transformer->transform($params);
+
+    // Validate request data
+    $validator = new ServerSideValidator($schema, $this->ci->translator);
+    if (!$validator->validate($data)) {
+      $ms->addValidationErrors($validator);
+      $error = true;
+    }
+
+    /** @var \UserFrosting\Sprinkle\Core\Util\ClassMapper $classMapper */
+    $classMapper = $this->ci->classMapper;
+
+    if ($error) {
+      return $response->withJson([], 400);
+    }
+    
+    /** @var \UserFrosting\Support\Repository\Repository $config */
+    $config = $this->ci->config;
+
+    // All checks passed!  log events/activities and create group
+    // Begin transaction - DB will be rolled back if an exception occurs
+    Capsule::transaction(function () use ($classMapper, $data, $ms, $config, $currentUser) {
+      // Create the group
+      $game = $classMapper->createInstance('LGame', $data);
+
+      // Store new group to database
+      $game->save();
+
+      $ms->addMessageTranslated('success', 'GROUP.CREATION_SUCCESSFUL', $data);
+    });
+
+    return $response->withJson([], 200);
+  }
+
   public function pageAccount($request, $response, $args) {
       return $this->ci->view->render($response, 'pages/dashboard.html.twig');
   }

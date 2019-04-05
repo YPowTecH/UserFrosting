@@ -10,7 +10,8 @@ $app->group('/', function () {
 })->add('authGuard');
 
 $app->group('/api', function () {
-  $this->post('/games', 'UserFrosting\Sprinkle\Site\Controller\PageController:pageIndex');
+  $this->post('/input', 'UserFrosting\Sprinkle\Site\Controller\PageController:apiInput');
+  //$this->post('/games', 'UserFrosting\Sprinkle\Site\Controller\PageController:pageIndex');
 })->add('authGuard');
 
 $app->get('/input','UserFrosting\Sprinkle\Site\Controller\PageController:pageInput')->add('authGuard');

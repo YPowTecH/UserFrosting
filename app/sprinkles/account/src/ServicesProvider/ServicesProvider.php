@@ -71,6 +71,7 @@ class ServicesProvider
             $classMapper->setClassMapping('LPatch', 'UserFrosting\Sprinkle\Account\Database\Models\LPatch');
             $classMapper->setClassMapping('LChampion', 'UserFrosting\Sprinkle\Account\Database\Models\LChampion');
             $classMapper->setClassMapping('LRole', 'UserFrosting\Sprinkle\Account\Database\Models\LRole');
+            $classMapper->setClassMapping('LGame', 'UserFrosting\Sprinkle\Account\Database\Models\LGame');
             //end
             $classMapper->setClassMapping('role', 'UserFrosting\Sprinkle\Account\Database\Models\Role');
             $classMapper->setClassMapping('permission', 'UserFrosting\Sprinkle\Account\Database\Models\Permission');

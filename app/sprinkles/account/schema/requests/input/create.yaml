@@ -1,0 +1,85 @@
+---
+home:
+  validators:
+    required:
+      label: "&TEAMHOME"
+      message: VALIDATE.REQUIRED
+  transformations:
+  - trim
+map:
+  validators:
+    required:
+      label: "&MAP"
+      message: VALIDATE.REQUIRED
+  transformations:
+  - trim
+away:
+  validators:
+    required:
+      label: "&TEAMAWAY"
+      message: VALIDATE.REQUIRED
+  transformations:
+  - trim
+pw:
+  validators:
+    required:
+      label: "&PW"
+      message: VALIDATE.REQUIRED
+    length:
+      label: "&PW"
+      min: 0
+      max: 16
+      message: VALIDATE.LENGTH_RANGE
+  transformations:
+  - trim
+winner:
+  validators:
+    required:
+      label: "&WINNER"
+      message: VALIDATE.REQUIRED
+  transformations:
+  - trim
+score:
+  validators:
+    required:
+      label: "&SCORE"
+      message: VALIDATE.REQUIRED
+    length:
+      label: "&SCORE"
+      min: 3
+      max: 3
+      message: VALIDATE.LENGTH_RANGE
+  transformations:
+  - trim
+lPatch_id:
+  validators:
+    required:
+      label: "&PATCH"
+      message: VALIDATE.REQUIRED
+  transformations:
+  - trim
+created_at:
+  validators:
+    required:
+      label: "&PLAYDATE"
+      message: VALIDATE.REQUIRED
+    length:
+      label: "&PLAYDATE"
+      min: 10
+      max: 10
+      message: VALIDATE.LENGTH_RANGE
+  transformations:
+  - trim
+ingame_id:
+  validators:
+    required:
+      label: "&GAMEID"
+      message: VALIDATE.REQUIRED
+    length:
+      label: "&GAMEID"
+      min: 0
+      max: 32
+      message: VALIDATE.LENGTH_RANGE
+  transformations:
+  - trim
+
