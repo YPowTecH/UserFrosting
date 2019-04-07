@@ -12,9 +12,9 @@
     <div class="modal-dialog animated zoomIn animated-3x" role="document">
       <div class="modal-content">
         <div class="modal-body">
-          <img src="{{assets.url('assets://img/paladins/champions/default.png')}}" class="selectChampion mb-1" id="" name="default" width="71"/>
+          <img src="{{assets.url('assets://img/paladins/champions/default.png')}}" class="selectChampion mb-1" id="0" name="default" width="71"/>
           {% for champion in champions %}
-            <img src="{{assets.url('assets://img/paladins/champions/'~champion.slug~'.png')}}" class="selectChampion mb-1" id="{{champion.slug}}" name="{{champion.slug}}" width="71"/>
+            <img src="{{assets.url('assets://img/paladins/champions/'~champion.slug~'.png')}}" class="selectChampion mb-1" id="{{champion.id}}" name="{{champion.slug}}" width="71"/>
           {% endfor %}
         </div>
         <div class="modal-footer">
@@ -37,8 +37,12 @@
               <div class="panel-body">
                 <div class="container">
                   <div class="row">
+                    <div class="col-md-12 errorBox">
+                    </div>
+                  </div>
+                  <div class="row">
                     <div class="col-md-4">
-                      <select id="team1" name="teamHome" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="1">
+                      <select id="team1" name="teamHome" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="1" required>
                         <option value="">Pick a Team 1...</option>
                         {% for team in teams %}
                           <option value="{{team.id}}">{{team.name}}</option>
@@ -46,7 +50,7 @@
                       </select>
                     </div>
                     <div class="col-md-4">
-                      <select id="map" name="map" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3">
+                      <select id="map" name="map" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3" required>
                         <option value="">Pick a Map...</option>
                         {% for map in maps %}
                           <option value="{{map.id}}">{{map.name}}</option>
@@ -54,7 +58,7 @@
                       </select>
                     </div>
                     <div class="col-md-4">
-                      <select id="team2" name="teamAway" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="2">
+                      <select id="team2" name="teamAway" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="2" required>
                         <option value="">Pick a Team 2...</option>
                         {% for team in teams %}
                           <option value="{{team.id}}">{{team.name}}</option>
@@ -66,12 +70,12 @@
                     <div class="col-md-6 banBox">
                       <div class="row stupidRow">
                         <div class="col-xs-3">
-                          <div class="mt-2 mr-1 draftBox homeBanBox" id="p0" name="" data-toggle="modal" data-target="#myModal">
+                          <div class="mt-2 mr-1 draftBox homeBanBox" id="b0" name="" data-toggle="modal" data-target="#myModal">
                             <img src="{{assets.url('assets://img/paladins/champions/ban/default.png')}}" class="nPick"/>
                           </div>
                         </div>
                         <div class="col-xs-3">
-                          <div class="mt-2 mr-1 draftBox homeBanBox" id="p0" name="" data-toggle="modal" data-target="#myModal">
+                          <div class="mt-2 mr-1 draftBox homeBanBox" id="b2" name="" data-toggle="modal" data-target="#myModal">
                             <img src="{{assets.url('assets://img/paladins/champions/ban/default.png')}}" class="nPick"/>
                           </div>
                         </div>
@@ -92,12 +96,12 @@
                     <div class="col-md-6 banBox">
                       <div class="row stupidRow float-right">
                         <div class="col-xs-3">
-                          <div class="mt-2 mr-1 draftBox awayBanBox" id="p0" name="" data-toggle="modal" data-target="#myModal">
+                          <div class="mt-2 mr-1 draftBox awayBanBox" id="b1" name="" data-toggle="modal" data-target="#myModal">
                             <img src="{{assets.url('assets://img/paladins/champions/ban/default.png')}}" class="nPick"/>
                           </div>
                         </div>
                         <div class="col-xs-3">
-                          <div class="mt-2 draftBox awayBanBox" id="p0" name="" data-toggle="modal" data-target="#myModal">
+                          <div class="mt-2 draftBox awayBanBox" id="b3" name="" data-toggle="modal" data-target="#myModal">
                             <img src="{{assets.url('assets://img/paladins/champions/ban/default.png')}}" class="nPick"/>
                           </div>
                         </div>
@@ -170,17 +174,17 @@
                       <input type="text" class="form-control" id="pw" name="pw" placeholder="Spectate Password" tabindex="4">
                     </div>
                     <div class="col-md-3">
-                      <select id="winner" name="winner" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="17">
+                      <select id="winner" name="winner" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="17" required>
                         <option value="">Pick a Winner...</option>
                         <option value="h">Home</option>
                         <option value="a">Away</option>
                       </select>
                     </div>
                     <div class="col-md-3" style="margin-top: 10px">
-                      <input type="text" class="form-control" id="score" name="score" placeholder="Score" tabindex="18">
+                      <input type="text" class="form-control" id="score" name="score" placeholder="Score" tabindex="18" required>
                     </div>
                     <div class="col-md-3">
-                      <select id="patch" name="patch" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true">
+                      <select id="patch" name="patch" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" required>
                         {% for patch in patches %}
                           <option value="{{patch.id}}">{{patch.name}}</option>
                         {% endfor %}
@@ -189,13 +193,13 @@
                   </div>
                   <div class="row">
                     <div class="col-md-3" style="margin-top: 10px">
-                      <input type="text" class="form-control" name="playDate" value="{{ "now"|date("m-d-Y") }}" tabindex="31">
+                      <input type="text" class="form-control" id="playDate" name="playDate" value="{{ "now"|date("m-d-Y") }}" tabindex="31">
                     </div>
                     <div class="col-md-3" style="margin-top: 10px">
-                      <input type="text" class="form-control" name="gameId" placeholder="ID">
+                      <input type="text" class="form-control" id="gameId" name="gameId" placeholder="ID">
                     </div>
                     <div class="col-md-3">
-                      <select id="winner" name="winner" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="17">
+                      <select id="matchType" name="matchType" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="17">
                         <option value="1">Scrim</option>
                         <option value="2">Tournament</option>
                         <option value="3">Other</option>
@@ -240,6 +244,37 @@
 
 
 {% block scripts_page %}
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="{{assets.url('assets://js/pow-input.js')}}"></script>
+<script src="http://userfrosting.test/assets-raw/vendor/handlebars/dist/handlebars.js"></script>
+<script src="http://userfrosting.test/assets-raw/vendor/jquery-validation/dist/jquery.validate.js"></script>
+<script src="http://userfrosting.test/assets-raw/vendor/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script src="http://userfrosting.test/assets-raw/vendor/icheck/icheck.min.js"></script>
+<script src="http://userfrosting.test/assets-raw/vendor/fastclick/lib/fastclick.js"></script>
+<script src="http://userfrosting.test/assets-raw/vendor/select2/dist/js/select2.full.js"></script>
+<script src="http://userfrosting.test/assets-raw/vendor/clipboard/dist/clipboard.js"></script>
+<script src="http://userfrosting.test/assets-raw/userfrosting/js/attrchange.js"></script>
+<script src="http://userfrosting.test/assets-raw/userfrosting/js/AdminLTE.js"></script>
+<script src="http://userfrosting.test/assets-raw/userfrosting/js/AdminLTE-custom.js"></script>
+<script src="http://userfrosting.test/assets-raw/userfrosting/js/fortress-jqueryvalidation-methods.js"></script>
+<script src="http://userfrosting.test/assets-raw/userfrosting/js/uf-jqueryvalidation-config.js"></script>
+<script src="http://userfrosting.test/assets-raw/userfrosting/js/uf-alerts.js"></script>
+<script src="http://userfrosting.test/assets-raw/userfrosting/js/uf-form.js"></script>
+<script src="http://userfrosting.test/assets-raw/userfrosting/js/uf-modal.js"></script>
+<script src="http://userfrosting.test/assets-raw/userfrosting/js/uf-copy.js"></script>
+<script src="http://userfrosting.test/assets-raw/userfrosting/js/uf-init.js"></script>
+
+  <!--{{ assets.js('js/main') | raw }}-->
+  <!--my main-->
+  <!--<script src="http://userfrosting.test/assets-raw/vendor/jquery-validation/dist/jquery.validate.js"></script>
+  <script src="http://userfrosting.test/assets-raw/userfrosting/js/fortress-jqueryvalidation-methods.js"></script>
+  <script src="http://userfrosting.test/assets-raw/userfrosting/js/uf-jqueryvalidation-config.js"></script>
+  <script src="http://userfrosting.test/assets-raw/userfrosting/js/uf-alerts.js"></script>
+  <script src="http://userfrosting.test/assets-raw/userfrosting/js/uf-form.js"></script>
+  <script src="http://userfrosting.test/assets-raw/userfrosting/js/uf-copy.js"></script>
+  <script src="http://userfrosting.test/assets-raw/userfrosting/js/uf-init.js"></script>-->
+  <!-- Include validation rules -->
+  <script>
+  {% include "pages/partials/page.js.twig" %}
+  </script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="{{assets.url('assets://js/pow-input.js')}}"></script>
 {% endblock %}

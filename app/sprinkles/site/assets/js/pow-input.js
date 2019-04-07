@@ -1,5 +1,7 @@
 $(document).ready(function() {
   var thisBox;
+  var bans = [0,0,0,0];
+  var picks = [0,0,0,0,0,0,0,0,0,0];
   $('.draftBox').on('click', function() {
     thisBox = $(this);
   });
@@ -14,10 +16,17 @@ $(document).ready(function() {
     }
     else {
 
+      if (thisBox.attr('id').substring(0, 1) == "b") {
+        bans[thisBox.attr('id').substring(1, 2)] = parseInt($(this).attr('id'));
+      }
+      else if (thisBox.attr('id').substring(0, 1) == "p") {
+        picks[thisBox.attr('id').substring(1, 2)] = parseInt($(this).attr('id'));
+      }
+
       //if the pick wasnt blank or default before the pick
       //  make avilable the previously selected champion
       if (thisBox.attr('name') != "" && thisBox.attr('name') != "default") {
-        $(this).parent('div').find('#'+thisBox.attr('name')).removeClass('used');
+        $(this).parent('div').find('img[name='+thisBox.attr('name')+']').removeClass('used');
       }
 
       //if the selected champion isnt being removed
@@ -36,6 +45,41 @@ $(document).ready(function() {
       else {
         thisBox.children('img').attr('src', 'http://userfrosting.test/assets-raw/img/paladins/champions/draft/'+$(this).attr('name')+'.png');
       }
+    }
+  });
+  //---------------------------------------------
+
+  //---------------------------------------------
+  //Last minute checks before we submit the draft
+  //---------------------------------------------
+  $('#theForm').submit(function() {
+    var found = false;
+    
+    //find out if there is an empty pick
+    for (i = 0; i < picks.length; i++) {
+      if (picks[i] == 0) {
+        found = true;
+        break;
+      }
+    }
+
+    //if there is an empty pick do not submit the draft
+    if (found) {
+      $('.errorBox').append('\
+        <div class="alert alert-danger alert-light alert-dismissible" role="alert">\
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="zmdi zmdi-close"></i></button>\
+          <strong><i class="zmdi zmdi-close-circle"></i> Error!</strong> Did not select a champion in the pick phase.\
+        </div>\
+      ');
+      $('html,body').animate({
+        scrollTop: $('#theForm').offset().top
+      }, 'slow');
+      return false;
+    }
+    else {
+      $('#hiddenGameBans').val(JSON.stringify(bans));
+      $('#hiddenGamePicks').val(JSON.stringify(picks));
+      return true;
     }
   });
   //---------------------------------------------

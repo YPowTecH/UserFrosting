@@ -1,5 +1,5 @@
 <?php
-
+/*
 namespace UserFrosting\Sprinkle\Site\Controller;
 
 use Carbon\Carbon;
@@ -8,6 +8,10 @@ use UserFrosting\Sprinkle\Account\Database\Models\LGame;
 use UserFrosting\Sprinkle\Core\Database\Models\Version;
 use UserFrosting\Sprinkle\Core\Util\EnvironmentInfo;
 use UserFrosting\Support\Exception\ForbiddenException;
+
+use UserFrosting\Fortress\RequestSchema;
+use UserFrosting\Fortress\RequestDataTransformer;
+use UserFrosting\Fortress\ServerSideValidator;
 
 use Slim\Http\Request;
 use Slim\Exception\NotFoundException;
@@ -18,6 +22,33 @@ use Onoi\Cache\DoctrineCache;
 use Onoi\Cache\MediaWikiCache;
 
 use UserFrosting\Sprinkle\Core\Controller\SimpleController;
+*/
+namespace UserFrosting\Sprinkle\Site\Controller;
+
+use Carbon\Carbon;
+use UserFrosting\Sprinkle\Account\Database\Models\User;
+use UserFrosting\Sprinkle\Account\Database\Models\LGame;
+use UserFrosting\Sprinkle\Core\Database\Models\Version;
+use UserFrosting\Sprinkle\Core\Util\EnvironmentInfo;
+
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use UserFrosting\Fortress\RequestDataTransformer;
+use UserFrosting\Fortress\RequestSchema;
+use UserFrosting\Fortress\ServerSideValidator;
+use UserFrosting\Fortress\Adapter\JqueryValidationAdapter;
+use UserFrosting\Sprinkle\Account\Database\Models\Group;
+use UserFrosting\Sprinkle\Core\Controller\SimpleController;
+use UserFrosting\Support\Exception\BadRequestException;
+
+use UserFrosting\Support\Exception\ForbiddenException;
+use UserFrosting\Support\Exception\NotFoundException;
+
+use Reflex\Paladins\API;
+use Onoi\Cache\ZendCache;
+use Onoi\Cache\DoctrineCache;
+use Onoi\Cache\MediaWikiCache;
 
 class PageController extends SimpleController {
   public function pageIndex($request, $response, $args) {
@@ -138,11 +169,18 @@ class PageController extends SimpleController {
       ->orderBy('name', 'asc')
       ->get();
 
+    // Load validation rules
+    $schema = new RequestSchema('schema://requests/input/create.yaml');
+    $validator = new JqueryValidationAdapter($schema, $this->ci->translator);
+
     return $this->ci->view->render($response, 'pages/input.html.twig', [
       'teams' => $teams,
       'maps' => $maps,
       'patches' => $patches,
       'champions' => $champions,
+      'page' => [
+          'validators' => $validator->rules('json', false)
+      ]
     ]);
   }
 
@@ -192,14 +230,34 @@ class PageController extends SimpleController {
     // Begin transaction - DB will be rolled back if an exception occurs
     Capsule::transaction(function () use ($classMapper, $data, $ms, $config, $currentUser) {
       // Create the group
+      //var_dump($data);
       $game = $classMapper->createInstance('LGame', $data);
+      $game['user_id'] = $currentUser['id'];
+      $game['lTitle_id'] = 2;
+      $game['lPatch_id'] = $data['patch'];
+      $game['ingame_id'] = $data['gameId'];
+      $game['home'] = $data['teamHome'];
+      $game['away'] = $data['teamAway'];
+      $bans = json_decode($data['hiddenGameBans']);
+      $picks = json_decode($data['hiddenGamePicks']);
 
+      for ($i = 0; $i < sizeof($bans); $i++) {
+        $game['b'.$i] = $bans[$i];
+      }
+
+      for ($i = 0; $i < sizeof($picks); $i++) {
+        $game['p'.$i] = $picks[$i];
+      }
+      
+      //var_dump($game);
+      //return;
       // Store new group to database
       $game->save();
 
       $ms->addMessageTranslated('success', 'GROUP.CREATION_SUCCESSFUL', $data);
     });
 
+    //return "hilio";
     return $response->withJson([], 200);
   }
 

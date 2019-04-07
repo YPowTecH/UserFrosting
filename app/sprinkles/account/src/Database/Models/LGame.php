@@ -35,7 +35,10 @@ class LGame extends Model {
     'lTitle_id',
     'lPatch_id',
     'ingame_id',
+    'playDate',
     'created_at',
+    'updated_at',
+    'matchType',
     'pw',
     'map',
     'winner',
@@ -45,7 +48,17 @@ class LGame extends Model {
     'b0',
     'b1',
     'b2',
-    'b3'
+    'b3',
+    'p0',
+    'p1',
+    'p2',
+    'p3',
+    'p4',
+    'p5',
+    'p6',
+    'p7',
+    'p8',
+    'p9'
   ];
 
   /**

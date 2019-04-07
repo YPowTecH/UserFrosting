@@ -1,30 +1,21 @@
 ---
-home:
+teamHome:
   validators:
     required:
       label: "&TEAMHOME"
       message: VALIDATE.REQUIRED
-  transformations:
-  - trim
 map:
   validators:
     required:
       label: "&MAP"
       message: VALIDATE.REQUIRED
-  transformations:
-  - trim
-away:
+teamAway:
   validators:
     required:
       label: "&TEAMAWAY"
       message: VALIDATE.REQUIRED
-  transformations:
-  - trim
 pw:
   validators:
-    required:
-      label: "&PW"
-      message: VALIDATE.REQUIRED
     length:
       label: "&PW"
       min: 0
@@ -37,8 +28,6 @@ winner:
     required:
       label: "&WINNER"
       message: VALIDATE.REQUIRED
-  transformations:
-  - trim
 score:
   validators:
     required:
@@ -51,14 +40,12 @@ score:
       message: VALIDATE.LENGTH_RANGE
   transformations:
   - trim
-lPatch_id:
+patch:
   validators:
     required:
       label: "&PATCH"
       message: VALIDATE.REQUIRED
-  transformations:
-  - trim
-created_at:
+playDate:
   validators:
     required:
       label: "&PLAYDATE"
@@ -70,16 +57,27 @@ created_at:
       message: VALIDATE.LENGTH_RANGE
   transformations:
   - trim
-ingame_id:
+gameId:
   validators:
-    required:
-      label: "&GAMEID"
-      message: VALIDATE.REQUIRED
     length:
       label: "&GAMEID"
       min: 0
-      max: 32
+      max: 16
       message: VALIDATE.LENGTH_RANGE
   transformations:
   - trim
-
+matchType:
+  validators:
+    required:
+      label: "&MATCHTYPE"
+      message: VALIDATE.REQUIRED
+hiddenGameBans:
+  validators:
+    required:
+      label: "&HIDDENGAMEBANS"
+      message: VALIDATE.REQUIRED
+hiddenGamePicks:
+  validators:
+    required:
+      label: "&HIDDENGAMEBANS"
+      message: VALIDATE.REQUIRED
