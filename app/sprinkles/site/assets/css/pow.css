@@ -1,3 +1,6 @@
+/*----------*/
+/*index page*/
+/*----------*/
 .filterHeader {
   display: inline;
 }
@@ -65,7 +68,26 @@
   border-radius: 4px;
 }
 
+.h-win {
+  background-color: #259d58;
+}
+.h-loss {
+  background-color: #b82020;
+}
+.h-tie {
+  background-color: #03a9f4;
+}
+
+.draftHeader {
+  color: white;
+  font-size: 14px;
+  width: 100%;
+  padding: 0px 5px 0px 5px;
+}
+
+/*----------*/
 /*input page*/
+/*----------*/
 @media (max-width: 426px) {
   .banBox {
     width: 50%;

@@ -187,10 +187,10 @@ class LGame extends Model {
     //array_push($wheres, array('lGames.user_id','=','1'));
 
     return Capsule::table('lGames')
-      ->select('lGames.ingame_id','lGames.created_at', 'lGames.pw', 'lGames.winner', 'lGames.score',
+      ->select('lGames.ingame_id', 'lGames.pw', 'lGames.winner', 'lGames.score',
         'hTeamName.abr AS hTeamName', 'aTeamName.abr AS aTeamName',
         'mapSlug.slug AS mapSlug', 'mapName.name AS mapName',
-        'patchName.slug AS patchName',
+        'patchName.slug AS patchName', 'matchType.name AS matchType',
         'champB0.slug AS champB0', 'champBR0.name AS champBR0',
         'champB1.slug AS champB1', 'champBR1.name AS champBR1',
         'champB2.slug AS champB2', 'champBR2.name AS champBR2',
@@ -204,13 +204,15 @@ class LGame extends Model {
         'champP6.slug AS champP6', 'champPR6.name AS champPR6',
         'champP7.slug AS champP7', 'champPR7.name AS champPR7',
         'champP8.slug AS champP8', 'champPR8.name AS champPR8',
-        'champP9.slug AS champP9', 'champPR9.name AS champPR9'
+        'champP9.slug AS champP9', 'champPR9.name AS champPR9',
+        Capsule::raw('DATE_FORMAT(lGames.created_at, "%c/%d/%Y") AS created_atF')
       )
       ->leftJoin('lTeams AS hTeamName', 'lGames.home', '=', 'hTeamName.id')
       ->leftJoin('lTeams AS aTeamName', 'lGames.away', '=', 'aTeamName.id')
       ->leftJoin('lMaps AS mapSlug', 'lGames.map', '=', 'mapSlug.id')
       ->leftJoin('lMaps AS mapName', 'lGames.map', '=', 'mapName.id')
       ->leftJoin('lPatches AS patchName', 'lGames.lPatch_id', '=', 'patchName.id')
+      ->leftJoin('lMatchTypes AS matchType', 'lGames.matchType', '=', 'matchType.id')
       ->leftJoin('lChampions AS champB0', 'lGames.b0', '=', 'champB0.id')
       ->leftJoin('lRoles AS champBR0', 'champB0.lRole_id', '=', 'champBR0.id')
       ->leftJoin('lChampions AS champB1', 'lGames.b1', '=', 'champB1.id')

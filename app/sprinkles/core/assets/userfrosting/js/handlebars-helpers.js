@@ -72,6 +72,14 @@ Handlebars.registerHelper('dateFormat', function(context, block) {
 });
 
 /**
+ * Format a date
+ */
+Handlebars.registerHelper('formatTime', function (date, format) {
+  var mmnt = moment(date);
+  return mmnt.format(format);
+});
+
+/**
  * Format a phone number.
  */
 Handlebars.registerHelper("phoneUSFormat", function(phoneNumber) {

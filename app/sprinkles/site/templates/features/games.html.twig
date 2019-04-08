@@ -1,4 +1,24 @@
+<div class="row">
 {% for game in games %}
+  <div class="col-lg-4">
+    <div class="card">
+      {% if (filters.mt == game.hTeamName and game.winner == "h") or (filters.mt == game.aTeamName and game.winner == "a") %}
+        <div class="draftHeader h-win">
+      {% elseif (filters.mt == game.hTeamName and game.winner == "a") or (filters.mt == game.aTeamName and game.winner == "h") %}
+        <div class="draftHeader h-loss">
+      {% else %}
+        <div class="draftHeader h-tie">
+      {% endif %}
+        <div class="float-left">{{game.matchType}} - {{game.created_atF}}</div>
+        <div class="float-right ml-3">{{game.score}}</div>
+        <div class="float-right">{{game.mapName}}</div>
+      </div>
+      <img src="{{assets.url('assets://img/paladins/maps')}}/Brightmarsh.png" class="nPick">
+      <div class="">
+      </div>
+    </div>
+  </div>
+  <!--
   <div class="col-xl-12 col-lg-12 col-sm-12">
     <div class="card">
       <div class="text-center gameBox '+borderWinLoseColor+'">
@@ -61,5 +81,6 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
 {% endfor %}
+</div>

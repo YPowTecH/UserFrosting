@@ -124,6 +124,7 @@ class PageController extends SimpleController {
       'patches' => $patches,
       'champions' => $champions,
       'games' => $games,
+      'filters' => $params,
       'test1' => json_encode($params),
       'test2' => $test2,
       //'paladins' => json_encode($playerD)
