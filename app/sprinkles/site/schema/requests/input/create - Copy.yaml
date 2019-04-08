@@ -1,7 +1,19 @@
 ---
 teamHome:
+  validators:
+    required:
+      label: "&TEAMHOME"
+      message: VALIDATE.REQUIRED
 map:
+  validators:
+    required:
+      label: "&MAP"
+      message: VALIDATE.REQUIRED
 teamAway:
+  validators:
+    required:
+      label: "&TEAMAWAY"
+      message: VALIDATE.REQUIRED
 pw:
   validators:
     length:
@@ -12,6 +24,10 @@ pw:
   transformations:
   - trim
 winner:
+  validators:
+    required:
+      label: "&WINNER"
+      message: VALIDATE.REQUIRED
 score:
   validators:
     required:
@@ -25,6 +41,10 @@ score:
   transformations:
   - trim
 patch:
+  validators:
+    required:
+      label: "&PATCH"
+      message: VALIDATE.REQUIRED
 playDate:
   validators:
     required:
@@ -47,6 +67,10 @@ gameId:
   transformations:
   - trim
 matchType:
+  validators:
+    required:
+      label: "&MATCHTYPE"
+      message: VALIDATE.REQUIRED
 hiddenGameBans:
   validators:
     required:

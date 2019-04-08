@@ -66,7 +66,7 @@ $(document).ready(function() {
     //if there is an empty pick do not submit the draft
     if (found) {
       $('.errorBox').append('\
-        <div class="alert alert-danger alert-light alert-dismissible" role="alert">\
+        <div class="alert alert-danger alert-dismissible" role="alert">\
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="zmdi zmdi-close"></i></button>\
           <strong><i class="zmdi zmdi-close-circle"></i> Error!</strong> Did not select a champion in the pick phase.\
         </div>\
@@ -79,7 +79,15 @@ $(document).ready(function() {
     else {
       $('#hiddenGameBans').val(JSON.stringify(bans));
       $('#hiddenGamePicks').val(JSON.stringify(picks));
-      return true;
+
+      $("#theForm").ufForm({
+        validator: page.validators.create,
+        msgTarget: $("#alerts-page")
+      }).on("submitSuccess.ufForm", function() {
+          // Reload the page on success
+          window.location.reload();
+      });
+      return false;
     }
   });
   //---------------------------------------------

@@ -38,11 +38,12 @@
                 <div class="container">
                   <div class="row">
                     <div class="col-md-12 errorBox">
+                      <div id="alerts-page"></div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-4">
-                      <select id="team1" name="teamHome" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="1" required>
+                      <select id="team1" name="teamHome" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3" required>
                         <option value="">Pick a Team 1...</option>
                         {% for team in teams %}
                           <option value="{{team.id}}">{{team.name}}</option>
@@ -207,7 +208,7 @@
                     </div>
                     <div class="col-md-3 float-right" style="margin-top: 10px">
                       <button type="button" class="btn btn-info btn-raised">Reset</button>
-                      <input type="submit" class="btn btn-success btn-raised" value="Submit" tabindex="30">
+                      <input type="submit" class="btn btn-success btn-raised gameSubmit" value="Submit" tabindex="30">
                       <input type="hidden" id="hiddenGameBans" name="hiddenGameBans" value="">
                       <input type="hidden" id="hiddenGamePicks" name="hiddenGamePicks" value="">
                     </div>
