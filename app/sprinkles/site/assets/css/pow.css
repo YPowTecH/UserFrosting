@@ -38,12 +38,18 @@
   margin: 2rem 0 1.5rem;
   font-size: 30px;
 }
+
+
 .gamePBClasses {
-  width: 40px;
-  height: 40px;
+  display: inline-grid;
+  width: 60px;
+  height: 60px;
 }
 .gamePBChamps {
-  width: 40px;
+  width: 60px;
+}
+.gamePlayerChamps {
+  width: 20px;
 }
 .c-Tank {
   background-color: blue;
@@ -57,17 +63,6 @@
 .c-Damage {
   background-color: red;
 }
-.gamePickTag {
-  color: black;
-  background-color: lime;
-  border-radius: 4px;
-}
-.gameBanTag {
-  color: black;
-  background-color: red;
-  border-radius: 4px;
-}
-
 .h-win {
   background-color: #259d58;
 }
@@ -77,12 +72,30 @@
 .h-tie {
   background-color: #03a9f4;
 }
-
 .draftHeader {
   color: white;
   font-size: 14px;
   width: 100%;
   padding: 0px 5px 0px 5px;
+}
+.nav.nav-tabs li a {
+  padding: 2px 2px;
+  padding: .2rem .2rem;
+}
+.matchTable {
+  text-align: center;
+}
+.matchTable h2 {
+  margin: 0px;
+}
+.matchTable .no-p td{
+  padding: 0!important;
+}
+.table tr:hover {
+  background-color: #ffffff;
+}
+.winner {
+  font-weight: 600;
 }
 
 /*----------*/

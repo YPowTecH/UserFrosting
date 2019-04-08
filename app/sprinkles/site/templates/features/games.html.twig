@@ -9,12 +9,110 @@
       {% else %}
         <div class="draftHeader h-tie">
       {% endif %}
-        <div class="float-left">{{game.matchType}} - {{game.created_atF}}</div>
+        <div class="float-left">{{game.created_atF}} - {{game.matchType}}</div>
         <div class="float-right ml-3">{{game.score}}</div>
         <div class="float-right">{{game.mapName}}</div>
       </div>
-      <img src="{{assets.url('assets://img/paladins/maps')}}/Brightmarsh.png" class="nPick">
-      <div class="">
+      <img src="{{assets.url('assets://img/paladins/maps')}}/{{game.mapSlug}}.png" class="nPick">
+      <ul class="nav nav-tabs nav-tabs-full nav-tabs-2 shadow-2dp" role="tablist">
+          <li class="nav-item"><a class="nav-link withoutripple active" href="#draftTab{{game.id}}" aria-controls="draftTab{{game.id}}" role="tab" data-toggle="tab"><i class="zmdi zmdi-developer-board"></i> <span class="d-none d-sm-inline">Draft</span></a></li>
+          <li class="nav-item"><a class="nav-link withoutripple" href="#playersTab{{game.id}}" aria-controls="playersTab{{game.id}}" role="tab" data-toggle="tab"><i class="zmdi zmdi-account"></i> <span class="d-none d-sm-inline">Players</span></a></li>
+      </ul>
+      <div class="card-body">
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane fade active show" id="draftTab{{game.id}}">
+              <table class="table table-no-border matchTable">
+                <tbody>
+                  <tr>
+                    {% if game.winner == "h" %}
+                      <td><h2 class="winner">{{game.hTeamName}}</h2></td>
+                      <td><h2>{{game.aTeamName}}</h2></td>
+                    {% else %}
+                      <td><h2>{{game.hTeamName}}</h2></td>
+                      <td><h2 class="winner">{{game.aTeamName}}</h2></td>
+                    {% endif %}
+                  </tr>
+                  <tr class="no-p">
+                    <td><span>Bans</span></td>
+                    <td><span>Bans</span></td>
+                  </tr>
+                  <tr class="no-p">
+                    <td>
+                      <div class="gamePBClasses c-{{game.champBR0}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champB0}}.png" class="gamePBChamps"></div>
+                      <div class="gamePBClasses c-{{game.champBR2}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champB2}}.png" class="gamePBChamps"></div>
+                    </td>
+                    <td>
+                      <div class="gamePBClasses c-{{game.champBR1}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champB1}}.png" class="gamePBChamps"></div>
+                      <div class="gamePBClasses c-{{game.champBR3}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champB3}}.png" class="gamePBChamps"></div>
+                    </td>
+                  </tr>
+                  <tr class="no-p">
+                    <td><span>Picks</span></td>
+                    <td><span>Picks</span></td>
+                  </tr>
+                  <tr class="no-p">
+                    <td>
+                      <div class="gamePBClasses c-{{game.champPR0}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP0}}.png" class="gamePBChamps"></div>
+                    </td>
+                    <td>
+                      <div class="gamePBClasses c-{{game.champPR1}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP1}}.png" class="gamePBChamps"></div>
+                      <div class="gamePBClasses c-{{game.champPR2}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP2}}.png" class="gamePBChamps"></div>
+                    </td>
+                  </tr>
+                  <tr class="no-p">
+                    <td>
+                      <div class="gamePBClasses c-{{game.champPR3}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP3}}.png" class="gamePBChamps"></div>
+                      <div class="gamePBClasses c-{{game.champPR4}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP4}}.png" class="gamePBChamps"></div>
+                    </td>
+                    <td>
+                      <div class="gamePBClasses c-{{game.champPR5}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP5}}.png" class="gamePBChamps"></div>
+                      <div class="gamePBClasses c-{{game.champPR6}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP6}}.png" class="gamePBChamps"></div>
+                    </td>
+                  </tr>
+                  <tr class="no-p">
+                    <td>
+                      <div class="gamePBClasses c-{{game.champPR7}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP7}}.png" class="gamePBChamps"></div>
+                      <div class="gamePBClasses c-{{game.champPR8}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP8}}.png" class="gamePBChamps"></div>
+                    </td>
+                    <td>
+                      <div class="gamePBClasses c-{{game.champPR9}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP9}}.png" class="gamePBChamps"></div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+          <div role="tabpanel" class="tab-pane fade" id="playersTab{{game.id}}">
+              <table class="table table-no-border">
+                <tbody>
+                  <tr style="text-align:center">
+                    {% if game.winner == "h" %}
+                      <td><h2 class="winner">{{game.hTeamName}}</h2></td>
+                      <td><h2>{{game.aTeamName}}</h2></td>
+                    {% else %}
+                      <td><h2>{{game.hTeamName}}</h2></td>
+                      <td><h2 class="winner">{{game.aTeamName}}</h2></td>
+                    {% endif %}
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class=""><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP0}}.png" class="gamePlayerChamps"> {{game.playerN0}}</div>
+                      <div class=""><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP3}}.png" class="gamePlayerChamps"> {{game.playerN3}}</div>
+                      <div class=""><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP4}}.png" class="gamePlayerChamps"> {{game.playerN4}}</div>
+                      <div class=""><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP7}}.png" class="gamePlayerChamps"> {{game.playerN7}}</div>
+                      <div class=""><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP8}}.png" class="gamePlayerChamps"> {{game.playerN8}}</div>
+                    </td>
+                    <td>
+                      <div class=""><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP1}}.png" class="gamePlayerChamps"> {{game.playerN1}}</div>
+                      <div class=""><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP2}}.png" class="gamePlayerChamps"> {{game.playerN2}}</div>
+                      <div class=""><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP5}}.png" class="gamePlayerChamps"> {{game.playerN5}}</div>
+                      <div class=""><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP6}}.png" class="gamePlayerChamps"> {{game.playerN6}}</div>
+                      <div class=""><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champP9}}.png" class="gamePlayerChamps"> {{game.playerN9}}</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>

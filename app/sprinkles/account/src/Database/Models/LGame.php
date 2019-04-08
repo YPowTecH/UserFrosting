@@ -58,7 +58,17 @@ class LGame extends Model {
     'p6',
     'p7',
     'p8',
-    'p9'
+    'p9',
+    'player0',
+    'player1',
+    'player2',
+    'player3',
+    'player4',
+    'player5',
+    'player6',
+    'player7',
+    'player8',
+    'player9'
   ];
 
   /**
@@ -187,7 +197,7 @@ class LGame extends Model {
     //array_push($wheres, array('lGames.user_id','=','1'));
 
     return Capsule::table('lGames')
-      ->select('lGames.ingame_id', 'lGames.pw', 'lGames.winner', 'lGames.score',
+      ->select('lGames.id', 'lGames.ingame_id', 'lGames.pw', 'lGames.winner', 'lGames.score',
         'hTeamName.abr AS hTeamName', 'aTeamName.abr AS aTeamName',
         'mapSlug.slug AS mapSlug', 'mapName.name AS mapName',
         'patchName.slug AS patchName', 'matchType.name AS matchType',
@@ -205,6 +215,16 @@ class LGame extends Model {
         'champP7.slug AS champP7', 'champPR7.name AS champPR7',
         'champP8.slug AS champP8', 'champPR8.name AS champPR8',
         'champP9.slug AS champP9', 'champPR9.name AS champPR9',
+        'player0.slug AS player0', 'playerN0.name AS playerN0',
+        'player1.slug AS player1', 'playerN1.name AS playerN1',
+        'player2.slug AS player2', 'playerN2.name AS playerN2',
+        'player3.slug AS player3', 'playerN3.name AS playerN3',
+        'player4.slug AS player4', 'playerN4.name AS playerN4',
+        'player5.slug AS player5', 'playerN5.name AS playerN5',
+        'player6.slug AS player6', 'playerN6.name AS playerN6',
+        'player7.slug AS player7', 'playerN7.name AS playerN7',
+        'player8.slug AS player8', 'playerN8.name AS playerN8',
+        'player9.slug AS player9', 'playerN9.name AS playerN9',
         Capsule::raw('DATE_FORMAT(lGames.created_at, "%c/%d/%Y") AS created_atF')
       )
       ->leftJoin('lTeams AS hTeamName', 'lGames.home', '=', 'hTeamName.id')
@@ -241,6 +261,26 @@ class LGame extends Model {
       ->leftJoin('lRoles AS champPR8', 'champP8.lRole_id', '=', 'champPR8.id')
       ->leftJoin('lChampions AS champP9', 'lGames.p9', '=', 'champP9.id')
       ->leftJoin('lRoles AS champPR9', 'champP9.lRole_id', '=', 'champPR9.id')
+      ->leftJoin('lPlayers AS player0', 'lGames.player0', '=', 'player0.id')
+      ->leftJoin('lPlayers AS player1', 'lGames.player1', '=', 'player1.id')
+      ->leftJoin('lPlayers AS player2', 'lGames.player2', '=', 'player2.id')
+      ->leftJoin('lPlayers AS player3', 'lGames.player3', '=', 'player3.id')
+      ->leftJoin('lPlayers AS player4', 'lGames.player4', '=', 'player4.id')
+      ->leftJoin('lPlayers AS player5', 'lGames.player5', '=', 'player5.id')
+      ->leftJoin('lPlayers AS player6', 'lGames.player6', '=', 'player6.id')
+      ->leftJoin('lPlayers AS player7', 'lGames.player7', '=', 'player7.id')
+      ->leftJoin('lPlayers AS player8', 'lGames.player8', '=', 'player8.id')
+      ->leftJoin('lPlayers AS player9', 'lGames.player9', '=', 'player9.id')
+      ->leftJoin('lPlayers AS playerN0', 'lGames.player0', '=', 'playerN0.id')
+      ->leftJoin('lPlayers AS playerN1', 'lGames.player1', '=', 'playerN1.id')
+      ->leftJoin('lPlayers AS playerN2', 'lGames.player2', '=', 'playerN2.id')
+      ->leftJoin('lPlayers AS playerN3', 'lGames.player3', '=', 'playerN3.id')
+      ->leftJoin('lPlayers AS playerN4', 'lGames.player4', '=', 'playerN4.id')
+      ->leftJoin('lPlayers AS playerN5', 'lGames.player5', '=', 'playerN5.id')
+      ->leftJoin('lPlayers AS playerN6', 'lGames.player6', '=', 'playerN6.id')
+      ->leftJoin('lPlayers AS playerN7', 'lGames.player7', '=', 'playerN7.id')
+      ->leftJoin('lPlayers AS playerN8', 'lGames.player8', '=', 'playerN8.id')
+      ->leftJoin('lPlayers AS playerN9', 'lGames.player9', '=', 'playerN9.id')
       ->whereRaw($wheres)
       ->orderBy('lGames.id', 'DESC')
       ->get();

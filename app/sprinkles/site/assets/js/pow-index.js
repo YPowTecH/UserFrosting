@@ -39,8 +39,21 @@ $(document).ready(function() {
     //return false; // ensure form still submits
   });
 
+  //Show classes instead of champs
+  var showClasses = false;
+  $('#filterShowClasses').on('click', function() {
+    if (!showClasses) {
+      $('.gamePBChamps').css('display', 'none');
+      showClasses = true;
+    }
+    else {
+      $('.gamePBChamps').css('display', '');
+      showClasses = false;
+    }
+  });
+  
   //Apply url filters
-  //filters();
+  filters();
 });
 
 function filters() {
