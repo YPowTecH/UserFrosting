@@ -38,12 +38,28 @@
                   </tr>
                   <tr class="no-p">
                     <td>
-                      <div class="gamePBClasses c-{{game.champBR0}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champB0}}.png" class="gamePBChamps"></div>
-                      <div class="gamePBClasses c-{{game.champBR2}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champB2}}.png" class="gamePBChamps"></div>
+                      {% if game.champB0 != "" %}
+                        <div class="gamePBClasses c-{{game.champBR0}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champB0}}.png" class="gamePBChamps"></div>
+                      {% else %}
+                        <div class="gamePBClasses c-Default"><img src="{{assets.url('assets://img/paladins/champions')}}/Default.png" class="gamePBChamps"></div>
+                      {% endif %}
+                      {% if game.champB2 != "" %}
+                        <div class="gamePBClasses c-{{game.champBR2}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champB2}}.png" class="gamePBChamps"></div>
+                      {% else %}
+                        <div class="gamePBClasses c-Default"><img src="{{assets.url('assets://img/paladins/champions')}}/Default.png" class="gamePBChamps"></div>
+                      {% endif %}
                     </td>
                     <td>
-                      <div class="gamePBClasses c-{{game.champBR1}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champB1}}.png" class="gamePBChamps"></div>
-                      <div class="gamePBClasses c-{{game.champBR3}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champB3}}.png" class="gamePBChamps"></div>
+                      {% if game.champB1 != "" %}
+                        <div class="gamePBClasses c-{{game.champBR1}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champB1}}.png" class="gamePBChamps"></div>
+                      {% else %}
+                        <div class="gamePBClasses c-Default"><img src="{{assets.url('assets://img/paladins/champions')}}/Default.png" class="gamePBChamps"></div>
+                      {% endif %}
+                      {% if game.champB3 != "" %}
+                        <div class="gamePBClasses c-{{game.champBR3}}"><img src="{{assets.url('assets://img/paladins/champions')}}/{{game.champB3}}.png" class="gamePBChamps"></div>
+                      {% else %}
+                        <div class="gamePBClasses c-Default"><img src="{{assets.url('assets://img/paladins/champions')}}/Default.png" class="gamePBChamps"></div>
+                      {% endif %}
                     </td>
                   </tr>
                   <tr class="no-p">

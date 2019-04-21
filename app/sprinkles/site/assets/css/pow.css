@@ -63,6 +63,9 @@
 .c-Damage {
   background-color: red;
 }
+.c-Default {
+  background-color: grey;
+}
 .h-win {
   background-color: #259d58;
 }
