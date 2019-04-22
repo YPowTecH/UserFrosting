@@ -127,8 +127,9 @@
                         <img src="{{assets.url('assets://img/paladins/champions/draft/default.png')}}" class="nPick"/>
                         <select id="" name="" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3" required>
                           <option value="">...</option>
-                          <option value="">Bob</option>
-                          <option value="">Steve</option>
+                          {% for player in players %}
+                            <option value="{{player.id}}">{{player.name}}</option>
+                          {% endfor %}
                         </select>
                       </div>
                       <div class="mt-2 draftBox homeDraftBox" id="p3" name="">
@@ -142,29 +143,77 @@
                       </div>
                       <div class="mt-2 draftBox homeDraftBox" id="p4" name="">
                         <img src="{{assets.url('assets://img/paladins/champions/draft/default.png')}}" class="nPick"/>
+                        <select id="" name="" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3" required>
+                          <option value="">...</option>
+                          {% for player in players %}
+                            <option value="{{player.id}}">{{player.name}}</option>
+                          {% endfor %}
+                        </select>
                       </div>
                       <div class="mt-2 draftBox homeDraftBox" id="p7" name="">
                         <img src="{{assets.url('assets://img/paladins/champions/draft/default.png')}}" class="nPick"/>
+                        <select id="" name="" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3" required>
+                          <option value="">...</option>
+                          {% for player in players %}
+                            <option value="{{player.id}}">{{player.name}}</option>
+                          {% endfor %}
+                        </select>
                       </div>
                       <div class="mt-2 draftBox homeDraftBox" id="p8" name="">
                         <img src="{{assets.url('assets://img/paladins/champions/draft/default.png')}}" class="nPick"/>
+                        <select id="" name="" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3" required>
+                          <option value="">...</option>
+                          {% for player in players %}
+                            <option value="{{player.id}}">{{player.name}}</option>
+                          {% endfor %}
+                        </select>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="mt-2 draftBox awayDraftBox" id="p1" name="">
                         <img src="{{assets.url('assets://img/paladins/champions/draft/default.png')}}" class="nPicki"/>
+                        <select id="" name="" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3" required>
+                          <option value="">...</option>
+                          {% for player in players %}
+                            <option value="{{player.id}}">{{player.name}}</option>
+                          {% endfor %}
+                        </select>
                       </div>
                       <div class="mt-2 draftBox awayDraftBox" id="p2" name="">
                         <img src="{{assets.url('assets://img/paladins/champions/draft/default.png')}}" class="nPicki"/>
+                        <select id="" name="" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3" required>
+                          <option value="">...</option>
+                          {% for player in players %}
+                            <option value="{{player.id}}">{{player.name}}</option>
+                          {% endfor %}
+                        </select>
                       </div>
                       <div class="mt-2 draftBox awayDraftBox" id="p5" name="">
                         <img src="{{assets.url('assets://img/paladins/champions/draft/default.png')}}" class="nPicki"/>
+                        <select id="" name="" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3" required>
+                          <option value="">...</option>
+                          {% for player in players %}
+                            <option value="{{player.id}}">{{player.name}}</option>
+                          {% endfor %}
+                        </select>
                       </div>
                       <div class="mt-2 draftBox awayDraftBox" id="p6" name="">
                         <img src="{{assets.url('assets://img/paladins/champions/draft/default.png')}}" class="nPicki"/>
+                        <select id="" name="" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3" required>
+                          <option value="">...</option>
+                          {% for player in players %}
+                            <option value="{{player.id}}">{{player.name}}</option>
+                          {% endfor %}
+                        </select>
                       </div>
                       <div class="mt-2 draftBox awayDraftBox" id="p9" name="">
                         <img src="{{assets.url('assets://img/paladins/champions/draft/default.png')}}" class="nPicki"/>
+                        <select id="" name="" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3" required>
+                          <option value="">...</option>
+                          {% for player in players %}
+                            <option value="{{player.id}}">{{player.name}}</option>
+                          {% endfor %}
+                        </select>
                       </div>
                     </div>
                   </div>
