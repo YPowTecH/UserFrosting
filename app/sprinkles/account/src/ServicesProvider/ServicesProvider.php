@@ -67,6 +67,7 @@ class ServicesProvider
             //PowTecH - filters: giving them to the user
             $classMapper->setClassMapping('LFilter', 'UserFrosting\Sprinkle\Account\Database\Models\LFilter');
             $classMapper->setClassMapping('LTeam', 'UserFrosting\Sprinkle\Account\Database\Models\LTeam');
+            $classMapper->setClassMapping('LPlayer', 'UserFrosting\Sprinkle\Account\Database\Models\LPlayer');
             $classMapper->setClassMapping('LMap', 'UserFrosting\Sprinkle\Account\Database\Models\LMap');
             $classMapper->setClassMapping('LPatch', 'UserFrosting\Sprinkle\Account\Database\Models\LPatch');
             $classMapper->setClassMapping('LChampion', 'UserFrosting\Sprinkle\Account\Database\Models\LChampion');

@@ -145,12 +145,15 @@
   cursor: pointer;
 }
 .pick {
-  height: 100px;
+  max-width: 100%;
+  height: auto;
+  width: auto\9; /* ie8 */
 }
 .nPick {
   max-width: 100%;
   height: auto;
   width: auto\9; /* ie8 */
+  position: absolute;
 }
 .nPicki {
   max-width: 100%;
@@ -165,4 +168,38 @@
 }
 .used {
   opacity: 0.4;
+  cursor: default;
+}
+.homeDraftBox .form-group::before {
+  content: "";
+  width: 20px;
+  height: 100%;
+  display: block;
+  background: inherit;
+  position: absolute;
+  left: -20px;
+  top: 0;
+  -webkit-clip-path: polygon(101% -1%, -70% 100%, 101% 100%);
+  clip-path: polygon(101% -1%, -70% 100%, 101% 100%);
+}
+.homeDraftBox .form-group {
+  position: relative;
+  float: right;
+  width: 50%;
+  top: 60px;
+  margin: 0 0 0;
+  padding-bottom: 0px;
+  background-color: rgba(255,255,255,0.6);
+}
+.homeDraftBox .form-group .form-control {
+  margin: 0px;
+}
+.homeDraftBox .bootstrap-select>.dropdown-toggle.bs-placeholder {
+  color: black;
+}
+.homeDraftBox .form-control, .homeDraftBox .form-group .form-control {
+  background-image: none;
+}
+.championImg {
+  display: block;
 }

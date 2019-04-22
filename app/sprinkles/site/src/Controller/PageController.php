@@ -119,6 +119,7 @@ class PageController extends SimpleController {
     //$request->fullUrlWithQuery(['mt' => 'xg']);
 
     return $this->ci->view->render($response, 'pages/index.html.twig', [
+      'players' => $players,
       'teams' => $teams,
       'maps' => $maps,
       'patches' => $patches,
@@ -148,6 +149,11 @@ class PageController extends SimpleController {
     $classMapper = $this->ci->classMapper;
 
     // Probably a better way to do this
+    $players = $classMapper->staticMethod('LPlayer', 'where', 'user_id', $currentUser->id)
+      ->orderBy('name', 'asc')
+      ->get();
+
+    // Probably a better way to do this
     $teams = $classMapper->staticMethod('LTeam', 'where', 'user_id', $currentUser->id)
       ->orderBy('name', 'asc')
       ->get();
@@ -175,6 +181,7 @@ class PageController extends SimpleController {
     $validator = new JqueryValidationAdapter($schema, $this->ci->translator);
 
     return $this->ci->view->render($response, 'pages/input.html.twig', [
+      'players' => $players,
       'teams' => $teams,
       'maps' => $maps,
       'patches' => $patches,

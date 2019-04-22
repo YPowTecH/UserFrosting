@@ -71,23 +71,23 @@
                     <div class="col-md-6 banBox">
                       <div class="row stupidRow">
                         <div class="col-xs-3">
-                          <div class="mt-2 mr-1 draftBox homeBanBox" id="b0" name="" data-toggle="modal" data-target="#myModal">
-                            <img src="{{assets.url('assets://img/paladins/champions/ban/default.png')}}" class="nPick"/>
+                          <div class="mt-2 mr-1 draftBox homeBanBox" id="b0" name="">
+                            <img src="{{assets.url('assets://img/paladins/champions/ban/default.png')}}" class="pick"/>
                           </div>
                         </div>
                         <div class="col-xs-3">
-                          <div class="mt-2 mr-1 draftBox homeBanBox" id="b2" name="" data-toggle="modal" data-target="#myModal">
-                            <img src="{{assets.url('assets://img/paladins/champions/ban/default.png')}}" class="nPick"/>
+                          <div class="mt-2 mr-1 draftBox homeBanBox" id="b2" name="">
+                            <img src="{{assets.url('assets://img/paladins/champions/ban/default.png')}}" class="pick"/>
                           </div>
                         </div>
                         <!--
                         <div class="col-xs-3">
-                          <div class="mt-2 mr-1 draftBox homeBanBox" id="p0" name="" data-toggle="modal" data-target="#myModal">
+                          <div class="mt-2 mr-1 draftBox homeBanBox" id="p0" name="">
                             <img src="{{assets.url('assets://img/paladins/champions/ban/default.png')}}" class="nPick"/>
                           </div>
                         </div>
                         <div class="col-xs-3">
-                          <div class="mt-2 draftBox homeBanBox" id="p0" name="" data-toggle="modal" data-target="#myModal">
+                          <div class="mt-2 draftBox homeBanBox" id="p0" name="">
                             <img src="{{assets.url('assets://img/paladins/champions/ban/default.png')}}" class="nPick"/>
                           </div>
                         </div>
@@ -97,23 +97,23 @@
                     <div class="col-md-6 banBox">
                       <div class="row stupidRow float-right">
                         <div class="col-xs-3">
-                          <div class="mt-2 mr-1 draftBox awayBanBox" id="b1" name="" data-toggle="modal" data-target="#myModal">
-                            <img src="{{assets.url('assets://img/paladins/champions/ban/default.png')}}" class="nPick"/>
+                          <div class="mt-2 mr-1 draftBox awayBanBox" id="b1" name="">
+                            <img src="{{assets.url('assets://img/paladins/champions/ban/default.png')}}" class="pick"/>
                           </div>
                         </div>
                         <div class="col-xs-3">
-                          <div class="mt-2 draftBox awayBanBox" id="b3" name="" data-toggle="modal" data-target="#myModal">
-                            <img src="{{assets.url('assets://img/paladins/champions/ban/default.png')}}" class="nPick"/>
+                          <div class="mt-2 draftBox awayBanBox" id="b3" name="">
+                            <img src="{{assets.url('assets://img/paladins/champions/ban/default.png')}}" class="pick"/>
                           </div>
                         </div>
                         <!--
                         <div class="col-xs-3">
-                          <div class="mt-2 mr-1 draftBox awayBanBox" id="p0" name="" data-toggle="modal" data-target="#myModal">
+                          <div class="mt-2 mr-1 draftBox awayBanBox" id="p0" name="">
                             <img src="{{assets.url('assets://img/paladins/champions/ban/default.png')}}" class="nPick"/>
                           </div>
                         </div>
                         <div class="col-xs-3">
-                          <div class="mt-2 draftBox awayBanBox" id="p0" name="" data-toggle="modal" data-target="#myModal">
+                          <div class="mt-2 draftBox awayBanBox" id="p0" name="">
                             <img src="{{assets.url('assets://img/paladins/champions/ban/default.png')}}" class="nPick"/>
                           </div>
                         </div>
@@ -123,36 +123,47 @@
                   </div>
                   <div class="row">
                     <div class="col-md-6">
-                      <div class="mt-2 draftBox homeDraftBox" id="p0" name="" data-toggle="modal" data-target="#myModal">
+                      <div class="mt-2 draftBox homeDraftBox" id="p0" name="">
+                        <img src="{{assets.url('assets://img/paladins/champions/draft/default.png')}}" class="nPick"/>
+                        <select id="" name="" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3" required>
+                          <option value="">...</option>
+                          <option value="">Bob</option>
+                          <option value="">Steve</option>
+                        </select>
+                      </div>
+                      <div class="mt-2 draftBox homeDraftBox" id="p3" name="">
+                        <img src="{{assets.url('assets://img/paladins/champions/draft/default.png')}}" class="nPick"/>
+                        <select id="" name="" class="form-control selectpicker" data-dropup-auto="false" data-size="4" data-live-search="true" tabindex="3" required>
+                          <option value="">...</option>
+                          {% for player in players %}
+                            <option value="{{player.id}}">{{player.name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+                      <div class="mt-2 draftBox homeDraftBox" id="p4" name="">
                         <img src="{{assets.url('assets://img/paladins/champions/draft/default.png')}}" class="nPick"/>
                       </div>
-                      <div class="mt-2 draftBox homeDraftBox" id="p3" name="" data-toggle="modal" data-target="#myModal">
+                      <div class="mt-2 draftBox homeDraftBox" id="p7" name="">
                         <img src="{{assets.url('assets://img/paladins/champions/draft/default.png')}}" class="nPick"/>
                       </div>
-                      <div class="mt-2 draftBox homeDraftBox" id="p4" name="" data-toggle="modal" data-target="#myModal">
-                        <img src="{{assets.url('assets://img/paladins/champions/draft/default.png')}}" class="nPick"/>
-                      </div>
-                      <div class="mt-2 draftBox homeDraftBox" id="p7" name="" data-toggle="modal" data-target="#myModal">
-                        <img src="{{assets.url('assets://img/paladins/champions/draft/default.png')}}" class="nPick"/>
-                      </div>
-                      <div class="mt-2 draftBox homeDraftBox" id="p8" name="" data-toggle="modal" data-target="#myModal">
+                      <div class="mt-2 draftBox homeDraftBox" id="p8" name="">
                         <img src="{{assets.url('assets://img/paladins/champions/draft/default.png')}}" class="nPick"/>
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="mt-2 draftBox awayDraftBox" id="p1" name="" data-toggle="modal" data-target="#myModal">
+                      <div class="mt-2 draftBox awayDraftBox" id="p1" name="">
                         <img src="{{assets.url('assets://img/paladins/champions/draft/default.png')}}" class="nPicki"/>
                       </div>
-                      <div class="mt-2 draftBox awayDraftBox" id="p2" name="" data-toggle="modal" data-target="#myModal">
+                      <div class="mt-2 draftBox awayDraftBox" id="p2" name="">
                         <img src="{{assets.url('assets://img/paladins/champions/draft/default.png')}}" class="nPicki"/>
                       </div>
-                      <div class="mt-2 draftBox awayDraftBox" id="p5" name="" data-toggle="modal" data-target="#myModal">
+                      <div class="mt-2 draftBox awayDraftBox" id="p5" name="">
                         <img src="{{assets.url('assets://img/paladins/champions/draft/default.png')}}" class="nPicki"/>
                       </div>
-                      <div class="mt-2 draftBox awayDraftBox" id="p6" name="" data-toggle="modal" data-target="#myModal">
+                      <div class="mt-2 draftBox awayDraftBox" id="p6" name="">
                         <img src="{{assets.url('assets://img/paladins/champions/draft/default.png')}}" class="nPicki"/>
                       </div>
-                      <div class="mt-2 draftBox awayDraftBox" id="p9" name="" data-toggle="modal" data-target="#myModal">
+                      <div class="mt-2 draftBox awayDraftBox" id="p9" name="">
                         <img src="{{assets.url('assets://img/paladins/champions/draft/default.png')}}" class="nPicki"/>
                       </div>
                     </div>

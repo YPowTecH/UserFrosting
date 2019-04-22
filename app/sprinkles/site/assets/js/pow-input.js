@@ -2,8 +2,21 @@ $(document).ready(function() {
   var thisBox;
   var bans = [0,0,0,0];
   var picks = [0,0,0,0,0,0,0,0,0,0];
+
+  //if the player select is clicked
+  //  we dont want to open the champion select modal
+  var clickOnName = false;
+  $('.form-group').on('click', function() {
+    clickOnName = true;
+  });
+
   $('.draftBox').on('click', function() {
     thisBox = $(this);
+
+    if (!clickOnName) {
+      $('#myModal').modal('show');
+    }
+    clickOnName = false;
   });
 
   //---------------------------------------------
