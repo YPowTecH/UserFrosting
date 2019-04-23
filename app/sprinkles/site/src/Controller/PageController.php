@@ -71,11 +71,11 @@ class PageController extends SimpleController {
 
     // Probably a better way to do this
     $teams = $classMapper->staticMethod('LTeam', 'where', 'user_id', $currentUser->id)
-      ->orderBy('name', 'desc')
+      ->orderBy('name', 'asc')
       ->get();
 
     // Probably a better way to do this
-    $maps = $classMapper->staticMethod('LMap', 'orderBy', 'name', 'desc')
+    $maps = $classMapper->staticMethod('LMap', 'orderBy', 'name', 'asc')
       ->get();
 
     // Probably a better way to do this
@@ -159,8 +159,7 @@ class PageController extends SimpleController {
       ->get();
 
     // Probably a better way to do this
-    $maps = $classMapper->staticMethod('LMap', 'orderBy', 'name', 'desc')
-      ->orderBy('slug','asc')
+    $maps = $classMapper->staticMethod('LMap', 'orderBy', 'name', 'asc')
       ->get();
 
     // Probably a better way to do this
